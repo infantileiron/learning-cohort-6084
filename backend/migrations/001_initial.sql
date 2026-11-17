@@ -27,6 +27,7 @@ CREATE TABLE `events` (
   `occurred_at` varchar(40) NOT NULL,
   `course` varchar(40) DEFAULT NULL,
   `note` text,
+  `recorded_at` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `code` (`code`),
   KEY `ix_events_learner` (`learner`)

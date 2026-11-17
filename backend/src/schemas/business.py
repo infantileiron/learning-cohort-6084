@@ -6,7 +6,13 @@ class EventInput(BaseModel):
  code:str=Field(min_length=1,max_length=60)
  learner:str=Field(min_length=1,max_length=60)
  occurred_at:str
- course:Literal['数据素养','服务沟通','安全规范']
+ course:str=Field(min_length=1,max_length=40)
+ @field_validator('course')
+ @classmethod
+ def course_name(cls,v):
+  v=v.strip()
+  if not v:raise ValueError('课程名称不能为空')
+  return v
  note:str=Field(default='',max_length=1000)
  @field_validator('occurred_at')
  @classmethod
@@ -30,3 +36,12 @@ class InterventionInput(BaseModel):
  week_index:int=Field(ge=1,le=8)
  note:str=Field(min_length=8,max_length=2000)
 class NoteInput(BaseModel):note:str=Field(min_length=8,max_length=2000)
+
+class RuleInput(BaseModel):
+ name:str=Field(min_length=2,max_length=100)
+ courses:list[str]=Field(min_length=1,max_length=30)
+ prerequisites:dict[str,list[str]]=Field(default_factory=dict)
+
+class RunInput(BaseModel):
+ rule_version_id:int|None=Field(default=None,gt=0)
+ as_of:date|None=None

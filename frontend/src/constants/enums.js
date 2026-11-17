@@ -1,1 +1,1 @@
-export const COURSES=['数据素养','服务沟通','安全规范'];export const ROLES=['admin','analyst','viewer'];export const STATES=['queued','running','done','failed'];export const STAGES=['draft','approved'];
+export const COURSES=['数据素养','服务沟通','安全规范'];export const ROLES=['admin','analyst','viewer'];export const STATES=['queued','running','done','failed'];export const STAGES=['draft','approved'];export const RULE_STATUSES=['draft','published','archived'];export const RUN_STATES=['pending','running','done','failed','superseded'];
